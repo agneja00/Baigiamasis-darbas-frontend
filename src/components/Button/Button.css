@@ -1,0 +1,9 @@
+.button {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #ff512f, #dd2476);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}

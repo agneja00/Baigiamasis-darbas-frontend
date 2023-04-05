@@ -1,0 +1,29 @@
+.register-form {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.text-danger {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.buttons {
+    justify-content: space-between;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.link {
+    text-align: center;
+}

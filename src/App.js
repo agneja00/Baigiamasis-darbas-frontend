@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from "react-router-dom";
+import { useState } from 'react';
+import routes from './constants/routes';
+import Layout from './components/Layout/Layout';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import HomePage from './pages/HomePage/HomePage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Cookies from 'js-cookie';
+
+const defaultToken = Cookies.get("_user_token");
 
 function App() {
+  const [token, setToken] = useState(defaultToken)
+  console.log(token);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Routes>
+         <Route path={routes.loginPage} element={<LoginPage onLogin={(token) => {
+          Cookies.set("_user_token", token);
+          setToken(token);
+        }}/>} />
+         <Route path={routes.homePage} element={<HomePage token={token}/>} />
+        <Route path={routes.registerPage} element={<RegisterPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Layout>
   );
 }
 
